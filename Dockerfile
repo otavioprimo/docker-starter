@@ -1,11 +1,14 @@
-FROM node:carbon
+FROM node:latest
 
-RUN mkdir /src
+RUN mkdir -p /usr/src/app
 
-WORKDIR /src
-ADD package*.json /src/package.json
+WORKDIR /usr/src/app
+
+COPY package.json /usr/src/app/
+
 RUN npm install
 
-EXPOSE 3000
+COPY . /usr/src/app
 
-CMD [ "npm","run","dev" ]
+EXPOSE 3000
+CMD [ "npm", "run","dev" ]

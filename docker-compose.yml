@@ -20,8 +20,12 @@ services:
     environment:
     - PMA_ARBITRARY=1
   web:
-    build: .
+    container_name: web
     volumes:
       - "./:/src/"
+    build: .
+    command: ["npm","run","dev"]
     ports:
       - "3000:3000"
+    depends_on:
+      - app
