@@ -22,7 +22,8 @@ services:
   web:
     container_name: web
     volumes:
-      - "./:/src/"
+      - "./:/usr/src/app/"
+      - "/usr/src/app/node_modules"
     build: .
     command: ["npm","run","dev"]
     ports:
